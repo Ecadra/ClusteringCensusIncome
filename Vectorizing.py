@@ -9,6 +9,7 @@ Created on Fri Apr  4 18:52:51 2025
 import pandas as pd
 
 # Cargar el CSV
+#Cambien el path por el de su computadora
 df = pd.read_csv('/Users/sebastiangarcia/Documents/Proyecto_Minería/census_income_kdd_filtrado.csv')
 
 # Contar registros (filas)
