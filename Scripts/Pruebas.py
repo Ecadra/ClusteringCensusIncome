@@ -1,5 +1,5 @@
-import pandas as pd
+from preparacion_datos import get_df
 
-df = pd.read_csv('./Data/census_income_kdd_filtrado.csv')
+df = get_df()
 
-print(df.head())
+print(df)
