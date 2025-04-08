@@ -14,7 +14,7 @@ def plot_dendogram(model, **kwargs):#Función para crear una matriz de unión y 
 
     for i, merge in enumerate(model.children_):
 
-        current_count=0                 #hay que estudiar este bloque de código
+        current_count=0                 
         for child_idx in merge:
             if child_idx < n_samples:
                 current_count += 1
@@ -27,18 +27,17 @@ def plot_dendogram(model, **kwargs):#Función para crear una matriz de unión y 
     dendrogram(linkage_matrix, **kwargs)
 
 
-df = pd.read_csv('./Data/dataset.csv')
-
+df = pd.read_csv('./Data/extracted_data/census-normalized.csv',header=0)#*Carga del dataset
 #print(df)
 
-clustering = AgglomerativeClustering(metric='euclidean', linkage='single', distance_threshold=0, n_clusters=None).fit(df) #utilizando el objeto de sklearn AgglomerativeClustering
+clustering = AgglomerativeClustering(metric='euclidean', linkage='complete', distance_threshold=0, n_clusters=None, compute_full_tree=True) #utilizando el objeto de sklearn AgglomerativeClustering
 
 #usar distance_threshold para asegurarse de que se creara el árbol completo
 
 
 clustering =clustering.fit(df)
 
-plt.title("Hierarchical Clusterin Dendogram")
+plt.title("Hierarchical Clusterin Dendrogram")
 
 plot_dendogram(clustering, truncate_mode="level", p=3)
 plt.show()
