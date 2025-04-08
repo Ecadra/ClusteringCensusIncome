@@ -81,7 +81,7 @@ path_names = "./Data/extracted_data/tarFile/census-income.names"
 path_test = "./Data/extracted_data/tarFile/census-income.test"
 
 path_filtered = "./Data/extracted_data/census-filtered.csv"
-selected_columns =["age","class of worker","education","major industry code","major occupation code","race","sex","country of birth father","country of birth mother","country of birth self","citizenship","own business or self employed","yearly income"]
+selected_columns =["instance weight","age","class of worker","education","major industry code","major occupation code","race","sex","country of birth father","country of birth mother","country of birth self","citizenship","own business or self employed","yearly income"]
 
 df = filter_dataset(path_data,read_names(path_names),path_filtered,selected_columns)
 
@@ -91,8 +91,9 @@ print(df.head())
 print(f'El total de valores nulos por columna es: {df.isnull().sum()}')
 
 path_normalized_df = "./Data/extracted_data/census-normalized.csv"
+df = df.sample(n=20000, weights="instance weight",random_state=42)
+df = df.drop(columns=["instance weight"])
 df = normalize_dataset(df,path_normalized_df)
-
 print(df.head())
 print(df.describe)
 
