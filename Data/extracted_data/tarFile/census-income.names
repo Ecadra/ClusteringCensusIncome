@@ -66,7 +66,7 @@
 | fill inc questionnaire for veteran's admin	VETQVA
 | veterans benefits				VETYN
 | weeks worked in year				WKSWORK
-|
+| 
 | Basic statistics for this data set:
 |
 | Number of instances data = 199523
@@ -78,48 +78,48 @@
 | Probability for the label '50000+' : 6.20%
 | Majority accuracy: 93.80% on value - 50000
 | Number of attributes = 40 (continuous : 7 nominal : 33)
-| Information about .data file :
-|*   91 distinct values for attribute #0 (age) continuous
-|*    9 distinct values for attribute #1 (class of worker) nominal
-|*   52 distinct values for attribute #2 (detailed industry recode) nominal
-|*   47 distinct values for attribute #3 (detailed occupation recode) nominal
-|*   17 distinct values for attribute #4 (education) nominal
-|* 1240 distinct values for attribute #5 (wage per hour) continuous
-|*    3 distinct values for attribute #6 (enroll in edu inst last wk) nominal
-|*    7 distinct values for attribute #7 (marital stat) nominal
-|*   24 distinct values for attribute #8 (major industry code) nominal
-|*   15 distinct values for attribute #9 (major occupation code) nominal
-|*    5 distinct values for attribute #10 (race) nominal
-|*   10 distinct values for attribute #11 (hispanic origin) nominal
-|*    2 distinct values for attribute #12 (sex) nominal
-|*    3 distinct values for attribute #13 (member of a labor union) nominal
-|*    6 distinct values for attribute #14 (reason for unemployment) nominal
-|*    8 distinct values for attribute #15 (full or part time employment stat) nominal
-|*  132 distinct values for attribute #16 (capital gains) continuous
-|*  113 distinct values for attribute #17 (capital losses) continuous
-|* 1478 distinct values for attribute #18 (dividends from stocks) continuous
-|*    6 distinct values for attribute #19 (tax filer stat) nominal
-|*    6 distinct values for attribute #20 (region of previous residence) nominal
-|*   51 distinct values for attribute #21 (state of previous residence) nominal
-|*   38 distinct values for attribute #22 (detailed household and family stat) nominal
-|*    8 distinct values for attribute #23 (detailed household summary in household) nominal
-|*   10 distinct values for attribute #24 (migration code-change in msa) nominal
-|*    9 distinct values for attribute #25 (migration code-change in reg) nominal
-|*   10 distinct values for attribute #26 (migration code-move within reg) nominal
-|*    3 distinct values for attribute #27 (live in this house 1 year ago) nominal
-|*    4 distinct values for attribute #28 (migration prev res in sunbelt) nominal
-|*    7 distinct values for attribute #29 (num persons worked for employer) continuous
-|*    5 distinct values for attribute #30 (family members under 18) nominal
-|*   43 distinct values for attribute #31 (country of birth father) nominal
-|*   43 distinct values for attribute #32 (country of birth mother) nominal
-|*   43 distinct values for attribute #33 (country of birth self) nominal
-|*    5 distinct values for attribute #34 (citizenship) nominal
-|*    3 distinct values for attribute #35 (own business or self employed) nominal
-|*    3 distinct values for attribute #36 (fill inc questionnaire for veteran's admin) nominal
-|*    3 distinct values for attribute #37 (veterans benefits) nominal
-|*   53 distinct values for attribute #38 (weeks worked in year) continuous
-|*    2 distinct values for attribute #39 (year) nominal
-|
+| Information about .data file : 
+|   91 distinct values for attribute #0 (age) continuous
+|    9 distinct values for attribute #1 (class of worker) nominal
+|   52 distinct values for attribute #2 (detailed industry recode) nominal
+|   47 distinct values for attribute #3 (detailed occupation recode) nominal
+|   17 distinct values for attribute #4 (education) nominal
+| 1240 distinct values for attribute #5 (wage per hour) continuous
+|    3 distinct values for attribute #6 (enroll in edu inst last wk) nominal
+|    7 distinct values for attribute #7 (marital stat) nominal
+|   24 distinct values for attribute #8 (major industry code) nominal
+|   15 distinct values for attribute #9 (major occupation code) nominal
+|    5 distinct values for attribute #10 (race) nominal
+|   10 distinct values for attribute #11 (hispanic origin) nominal
+|    2 distinct values for attribute #12 (sex) nominal
+|    3 distinct values for attribute #13 (member of a labor union) nominal
+|    6 distinct values for attribute #14 (reason for unemployment) nominal
+|    8 distinct values for attribute #15 (full or part time employment stat) nominal
+|  132 distinct values for attribute #16 (capital gains) continuous
+|  113 distinct values for attribute #17 (capital losses) continuous
+| 1478 distinct values for attribute #18 (dividends from stocks) continuous
+|    6 distinct values for attribute #19 (tax filer stat) nominal
+|    6 distinct values for attribute #20 (region of previous residence) nominal
+|   51 distinct values for attribute #21 (state of previous residence) nominal
+|   38 distinct values for attribute #22 (detailed household and family stat) nominal
+|    8 distinct values for attribute #23 (detailed household summary in household) nominal
+|   10 distinct values for attribute #24 (migration code-change in msa) nominal
+|    9 distinct values for attribute #25 (migration code-change in reg) nominal
+|   10 distinct values for attribute #26 (migration code-move within reg) nominal
+|    3 distinct values for attribute #27 (live in this house 1 year ago) nominal
+|    4 distinct values for attribute #28 (migration prev res in sunbelt) nominal
+|    7 distinct values for attribute #29 (num persons worked for employer) continuous
+|    5 distinct values for attribute #30 (family members under 18) nominal
+|   43 distinct values for attribute #31 (country of birth father) nominal
+|   43 distinct values for attribute #32 (country of birth mother) nominal
+|   43 distinct values for attribute #33 (country of birth self) nominal
+|    5 distinct values for attribute #34 (citizenship) nominal
+|    3 distinct values for attribute #35 (own business or self employed) nominal
+|    3 distinct values for attribute #36 (fill inc questionnaire for veteran's admin) nominal
+|    3 distinct values for attribute #37 (veterans benefits) nominal
+|   53 distinct values for attribute #38 (weeks worked in year) continuous
+|    2 distinct values for attribute #39 (year) nominal
+| 
 |
 | Error rates:
 |    C4.5       	: 4.8%
@@ -128,7 +128,7 @@
 |    C5.0 boosting	: 4.6%
 |    Naive-Bayes	: 23.2%
 |
-|
+| 
 | All commas and periods were changed to spaces
 | Colons were replaced with dashes.
 |
@@ -138,7 +138,8 @@
 | This attribute should *not* be used in the classifiers, so it is
 | set to "ignore" in this file.
 |
-| - 50000, 50000+.
+- 50000, 50000+.
+
 age: continuous.
 class of worker: Not in universe, Federal government, Local government, Never worked, Private, Self-employed-incorporated, Self-employed-not incorporated, State government, Without pay.
 detailed industry recode: 0, 40, 44, 2, 43, 47, 48, 1, 11, 19, 24, 25, 32, 33, 34, 35, 36, 37, 38, 39, 4, 42, 45, 5, 15, 16, 22, 29, 31, 50, 14, 17, 18, 28, 3, 30, 41, 46, 51, 12, 13, 21, 23, 26, 6, 7, 9, 49, 27, 8, 10, 20.
@@ -181,4 +182,3 @@ fill inc questionnaire for veteran's admin: Not in universe, Yes, No.
 veterans benefits: 0, 2, 1.
 weeks worked in year: continuous.
 year: 94, 95.
-yearly income: - 50000, 50000+
