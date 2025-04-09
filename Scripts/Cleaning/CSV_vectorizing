@@ -37,10 +37,10 @@ num_cols = df.select_dtypes(include=['int64', 'float64']).columns
 scaler = MinMaxScaler()
 df[num_cols] = scaler.fit_transform(df[num_cols])
 
-# Verificar el resultado
-print("\nDataFrame transformado:")
-print(df.head())
-print("\nTipos de datos:")
+#Comprobar el resultado
+print("\nDataFrame transformado:") 
+print(df.head()) #imprime las primeras 5 filas
+print("\nTipos de datos:") #imprime los tipos de datos 
 print(df.dtypes)
 
 # Guardar el DataFrame transformado
