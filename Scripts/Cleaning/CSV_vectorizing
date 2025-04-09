@@ -37,6 +37,10 @@ num_cols = df.select_dtypes(include=['int64', 'float64']).columns
 scaler = MinMaxScaler()
 df[num_cols] = scaler.fit_transform(df[num_cols])
 
+
+# Eliminar el instance weight (MARSUPWRT) y la columna de ingresos (income)
+df = df.drop(columns=['income', 'MARSUPWRT'], errors='ignore')  # 'errors=ignore' evita error si alguna no existe
+
 #Comprobar el resultado
 print("\nDataFrame transformado:") 
 print(df.head()) #imprime las primeras 5 filas
