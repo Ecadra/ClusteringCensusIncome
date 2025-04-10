@@ -138,7 +138,6 @@
 | This attribute should *not* be used in the classifiers, so it is
 | set to "ignore" in this file.
 |
-- 50000, 50000+.
 
 age: continuous.
 class of worker: Not in universe, Federal government, Local government, Never worked, Private, Self-employed-incorporated, Self-employed-not incorporated, State government, Without pay.
@@ -182,3 +181,4 @@ fill inc questionnaire for veteran's admin: Not in universe, Yes, No.
 veterans benefits: 0, 2, 1.
 weeks worked in year: continuous.
 year: 94, 95.
+income: .
