@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 ##Este script genera y muestra el dendograma
 
 def plot_dendogram(model, **kwargs):#Función para crear una matriz de unión y plotear el dendograma
+    
     counts = np.zeros(model.children_.shape[0])#hacer el conteo de muestras de cada nodo (esto dice en la documentación de scikit-learn. Dejo el link abajo)
     #https://scikit-learn.org/stable/auto_examples/cluster/plot_agglomerative_dendrogram.html#sphx-glr-auto-examples-cluster-plot-agglomerative-dendrogram-py
     n_samples= len(model.labels_)
@@ -29,6 +30,7 @@ def plot_dendogram(model, **kwargs):#Función para crear una matriz de unión y 
 
 df = pd.read_csv('./Data/extracted_data/census-normalized.csv',header=0)#*Carga del dataset
 #print(df)
+                       
 
 clustering = AgglomerativeClustering(metric='euclidean', linkage='complete', distance_threshold=0, n_clusters=None, compute_full_tree=True) #utilizando el objeto de sklearn AgglomerativeClustering
 
