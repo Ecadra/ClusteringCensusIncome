@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import DBSCAN
 from sklearn.neighbors import NearestNeighbors
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from kneed import KneeLocator
 from preparacion_datos import get_df
 from davies_bouldin import davies_bouldin
@@ -11,7 +11,7 @@ from tabulate import tabulate
 
 # Cargar el CSV (ruta robusta para evitar problemas) ----
 base_dir = os.path.dirname(__file__)
-ruta_csv = os.path.join(base_dir, "..", "Data", "census-normalized.csv")
+ruta_csv = os.path.join(base_dir, "..", "Data", "CSVs","census_income_30k_transformed.csv")
 ruta_csv = os.path.abspath(ruta_csv)
 
 data = pd.read_csv(ruta_csv)
@@ -20,13 +20,13 @@ data = pd.read_csv(ruta_csv)
 X = data.values  # Convertir el DataFrame a una matriz NumPy
 
 # 3. Visualización inicial de los datos (opcional)
-if X.shape[1] == 2:  # Verifica si las dimensiones son 2D para poder graficar
-    df = pd.DataFrame(X, columns=["x", "y"])
-    fig, ax = plt.subplots(figsize=(8, 8))
-    df.plot(ax=ax, kind="scatter", x="x", y="y")
-    plt.xlabel("X_1")
-    plt.ylabel("X_2")
-    plt.show()
+# if X.shape[1] == 2:  # Verifica si las dimensiones son 2D para poder graficar
+#     df = pd.DataFrame(X, columns=["x", "y"])
+#     fig, ax = plt.subplots(figsize=(8, 8))
+#     df.plot(ax=ax, kind="scatter", x="x", y="y")
+#     plt.xlabel("X_1")
+#     plt.ylabel("X_2")
+#     plt.show()
 
 
 # 4. Determinar el valor óptimo de eps usando el k-dist plot
@@ -67,13 +67,14 @@ def dbscan_clustering(eps, minPts):
     )  # Restar 1 si hay ruido (-1)
     n_noise = list(labels).count(-1)
 
-    davies_bouldin(X, labels)
+    # davies_bouldin(X, labels)
 
     # print(f"Cantidad de clusters generados: {n_clusters}")
     # print(f"Número de objetos por cluster:")
     output["epsilon"] = eps
     output["minPts"] = minPts
     output["n_clusters"] = n_clusters
+    output["ruido"] = n_noise
     for cluster_id in unique_labels:
         if cluster_id != -1:  # No mostrar ruido
             # print(f"Cluster {cluster_id}: {list(labels).count(cluster_id)} objetos")
@@ -81,20 +82,14 @@ def dbscan_clustering(eps, minPts):
 
     # print(f"Objetos considerados ruido: {n_noise}")
 
-    output["ruido"] = n_noise
     return output
 
 
 datos = []
-datos.append(dbscan_clustering(0.55, 14))
-datos.append(dbscan_clustering(0.65, 14))
-datos.append(dbscan_clustering(0.7, 14))
-datos.append(dbscan_clustering(0.8, 14))
-datos.append(dbscan_clustering(0.55, 26))
-datos.append(dbscan_clustering(0.6, 26))
-datos.append(dbscan_clustering(0.7, 26))
-datos.append(dbscan_clustering(0.8, 26))
-
+minpts=14
+for i in range (1,30):
+    datos.append(dbscan_clustering(1.28,minpts))
+    minpts+=1
 print('------Clustering con DBSCAN------')
 print('------B  I  T  Á  C  O  R  A-----')
 print(tabulate(datos, headers="keys", tablefmt="grid"))
