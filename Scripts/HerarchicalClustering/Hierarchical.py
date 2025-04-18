@@ -12,7 +12,7 @@ df = pd.read_csv('./Data/CSVs/census_income_30k_transformed.csv',header=0)#*Carg
 
 #print(df)
 
-clustering = AgglomerativeClustering(metric='euclidean', linkage='complete', n_clusters=8) #utilizando el objeto de sklearn AgglomerativeClustering
+clustering = AgglomerativeClustering(metric='euclidean', linkage='complete', n_clusters=2) #utilizando el objeto de sklearn AgglomerativeClustering
 #Para poder hacer más o menos cluster se tiene que modificar el número de n_clusters
 labels = clustering.fit_predict(df)
 
@@ -50,9 +50,13 @@ print(len(cluster6.index))
 cluster7 = df[df['cluster']==7]
 print('Objetos del cluster 7: ')
 print(len(cluster7.index))
+
+
+print("Total de objetos asignados a clusters:", df['cluster'].value_counts().sum())
+print("Total de registros en el DataFrame:", len(df))
+
 #Indice de calinski.Harabasz
 
-#ch_score = calinski_harabasz_score(df,labels)
-
-#print("Índice de validación (Calinski-Harabasz):", ch_score)
+ch_score = calinski_harabasz_score(df.drop(columns=['cluster']), labels)
+print("Índice de validación (Calinski-Harabasz):", ch_score)
 
