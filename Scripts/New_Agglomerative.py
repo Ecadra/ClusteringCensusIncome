@@ -3,12 +3,13 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.decomposition import PCA
-from sklearn.metrics import calinski_harabasz_score
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from prettytable import PrettyTable
-import Dunn as Dunn
 
+from Indexes.calinsky import get_ch_score
+from Indexes.davies_bouldin import get_db_score
+from Indexes.Dunn import calcDunnIndex
 #Cargar el dataset
 df = pd.read_csv('./Data/CSVs/census_income_30k_transformed.csv')
 
@@ -35,14 +36,15 @@ plt.grid(True)
 """
 # 4. Evaluación de diferentes números de clusters
 table = PrettyTable()
-table.field_names = ["Número de Clusters (k)", "Calinski-Harabasz Score","Dunn Score"]
+table.field_names = ["Número de Clusters (k)", "Calinski-Harabasz Score","Dunn Score","Davies-Bouldin Score"]
 
 for k in range(2, 5):
     model = AgglomerativeClustering(metric='euclidean', linkage='complete', n_clusters=k)
     labels = model.fit_predict(df)
-    ch_score = calinski_harabasz_score(df, labels)
-    dunn_score = Dunn.calcDunnIndex(df,labels)
-    table.add_row([k, round(ch_score, 2),round(dunn_score,2)])
+    ch_score = get_ch_score(df, labels)
+    dunn_score = calcDunnIndex(df,labels)
+    db_score=get_db_score(df,labels)
+    table.add_row([k, round(ch_score, 2),round(dunn_score,2),round(db_score,2)])
 
     # Asignar clusters temporalmente
     df_temp = df.copy()

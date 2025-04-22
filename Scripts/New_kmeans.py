@@ -1,16 +1,16 @@
 from sklearn.cluster import KMeans
 from sklearn.metrics import calinski_harabasz_score
-import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from prettytable import PrettyTable
-import seaborn as sns
-import Transformation_Loading_Process as tlp
-import os
-import Dunn as Dunn
+from kmeans_procedures import Transformation_Loading_Process as tlp
+from Indexes.calinsky import get_ch_score
+from Indexes.davies_bouldin import get_db_score
+from Indexes.Dunn import calcDunnIndex
+
 # Tabla resumen
 table = PrettyTable()
-table.field_names = ["K","Inercia","Iteraciones realizadas","Distancia hasta el centro", "CH Score","Dunn Score"]
+table.field_names = ["K","Inercia","Iteraciones realizadas","Distancia hasta el centro", "CH Score","Dunn Score","DB Score"]
 
 # Cargar y preparar datos
 df_normalized = pd.read_csv("./Data/CSVs/census_income_30k_transformed.csv")
@@ -28,7 +28,9 @@ for k in range(2, 5):
     kmeans.fit(X)
     labels = kmeans.labels_
     print(f"Calculando el índice de Dunn con {k} clusters...")
-    dunn_score = Dunn.calcDunnIndex(X,labels)
+    ch_score=get_ch_score(X,labels)
+    dunn_score = calcDunnIndex(X,labels)
+    db_score=get_db_score(X,labels)
     # Calcular distancia media hasta el centro más cercano
     distance = np.mean(np.min(kmeans.transform(X), axis=1))
 
@@ -55,7 +57,8 @@ for k in range(2, 5):
         kmeans.n_iter_,
         round(distance, 2),
         round(ch_score, 2),
-        round(dunn_score,2)
+        round(dunn_score,2),
+        round(db_score,2)
     ])
 
 # Mostrar tabla resumen
