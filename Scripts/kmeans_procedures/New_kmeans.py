@@ -27,6 +27,7 @@ for k in range(2, 5):
     kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
     kmeans.fit(X)
     labels = kmeans.labels_
+    print(f"Calculando el índice de Dunn con {k} clusters...")
     dunn_score = Dunn.calcDunnIndex(X,labels)
     # Calcular distancia media hasta el centro más cercano
     distance = np.mean(np.min(kmeans.transform(X), axis=1))
