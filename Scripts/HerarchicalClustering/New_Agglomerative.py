@@ -7,6 +7,7 @@ from sklearn.metrics import calinski_harabasz_score
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from prettytable import PrettyTable
+import Dunn as Dunn
 
 #Cargar el dataset
 df = pd.read_csv('./Data/CSVs/census_income_30k_transformed.csv')
@@ -34,13 +35,14 @@ plt.grid(True)
 """
 # 4. Evaluación de diferentes números de clusters
 table = PrettyTable()
-table.field_names = ["Número de Clusters (k)", "Calinski-Harabasz Score"]
+table.field_names = ["Número de Clusters (k)", "Calinski-Harabasz Score","Dunn Score"]
 
 for k in range(2, 5):
     model = AgglomerativeClustering(metric='euclidean', linkage='complete', n_clusters=k)
     labels = model.fit_predict(df)
     ch_score = calinski_harabasz_score(df, labels)
-    table.add_row([k, round(ch_score, 2)])
+    dunn_score = Dunn.calcDunnIndex(df,labels)
+    table.add_row([k, round(ch_score, 2),round(dunn_score,2)])
 
     # Asignar clusters temporalmente
     df_temp = df.copy()

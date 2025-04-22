@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.cluster import DBSCAN
 from sklearn.metrics import calinski_harabasz_score
 from prettytable import PrettyTable
+import Dunn as Dunn
 
 # Dataset cargado
 df = pd.read_csv('./Data/CSVs/census_income_30k_transformed.csv')
@@ -26,6 +27,8 @@ for config in configuraciones:
     if n_clusters >= 2:
         ch_score = calinski_harabasz_score(X[labels != -1], labels[labels != -1])
         ch_score = round(ch_score, 2)
+        dunn_score = Dunn.calcDunnIndex(X[labels != -1],labels[labels != -1])
+        dunn_score = round(dunn_score,2)
     else:
         ch_score = "No aplica"
 
@@ -33,7 +36,8 @@ for config in configuraciones:
         config["eps"],
         config["min_samples"],
         n_clusters,
-        ch_score
+        ch_score,
+        dunn_score
     ])
  
 # Resultados 
