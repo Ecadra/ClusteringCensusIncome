@@ -44,7 +44,7 @@ for k in range(2, 5):
     ch_score = get_ch_score(df, labels)
     dunn_score = calcDunnIndex(df,labels)
     db_score=get_db_score(df,labels)
-    table.add_row([k, round(ch_score, 2),round(dunn_score,2),round(db_score,2)])
+    table.add_row([k, round(ch_score, 2),round(dunn_score,2),round(db_score,10)])
 
     # Asignar clusters temporalmente
     df_temp = df.copy()

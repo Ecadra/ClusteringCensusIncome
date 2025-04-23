@@ -17,7 +17,7 @@ configuraciones = [
 
 # Tabla para resultados
 tabla = PrettyTable()
-tabla.field_names = ["Epsilon", "MinPts", "Clusters", "CH Score"]
+tabla.field_names = ["Epsilon", "MinPts", "Clusters", "CH Score", "Dunn Score"]
 
 # Evaluación
 for config in configuraciones:
