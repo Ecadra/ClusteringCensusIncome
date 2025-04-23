@@ -65,8 +65,13 @@ for k in range(2, 5):
 print("\nResultados del clustering:")
 print(table)
 
+#El agrupamiento más significativo se da en k=5, ya que el CH Score es el más alto, lo que indica que los clusters 
+# son más compactos y separados entre sí. Además la inercia es baja, lo que indica que los puntos 
+# dentro de cada cluster están cerca del centroide.
+#El agregar un cluster más despues de k=5 puede significar sobrejuste
 
 """
+
 Resultados del clustering:
 +---+----------+------------------------+---------------------------+----------+
 | K | Inercia  | Iteraciones realizadas | Distancia hasta el centro | CH Score |
