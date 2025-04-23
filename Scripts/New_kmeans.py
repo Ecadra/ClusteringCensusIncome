@@ -58,7 +58,7 @@ for k in range(2, 5):
         round(distance, 2),
         round(ch_score, 2),
         round(dunn_score,2),
-        round(db_score,2)
+        round(db_score,10)
     ])
 
 # Mostrar tabla resumen
