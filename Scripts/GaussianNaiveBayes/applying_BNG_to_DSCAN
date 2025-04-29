@@ -7,7 +7,7 @@ from sklearn.model_selection import cross_validate
 df= pd.read_csv('./Data/CSVs/census_income_30k_transformed_DBSCAN.csv')
 df_copy = df.copy()
 
-df_copy= df_copy[df_copy['cluster'] != -1]
+#df_copy= df_copy[df_copy['cluster'] != -1]
 
 X_train,X_test,y_train,y_test = train_test_split(df_copy.drop(columns=['cluster']),
                                                  df_copy['cluster'],test_size=0.3,random_state=42,train_size=0.7)
